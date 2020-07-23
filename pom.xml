@@ -7,6 +7,9 @@
     <groupId>testJavaEE</groupId>
     <artifactId>testJavaEE</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>first-test-app</module>
+    </modules>
     <packaging>pom</packaging>
 
 
