@@ -47,3 +47,11 @@
 18:48:18,299 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0025: WildFly Full 20.0.1.Final (WildFly Core 12.0.3.Final) started in 4069ms - Started 314 of 580 services (370 services are lazy, passive or on-demand)
 18:48:18,305 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0060: Http management interface listening on http://127.0.0.1:9990/management
 18:48:18,306 INFO  [org.jboss.as] (Controller Boot Thread) WFLYSRV0051: Admin console listening on http://127.0.0.1:9990
+
+19:41:02,107 INFO  [org.jboss.as.repository] (management-handler-thread - 2) WFLYDR0001: Content added at location D:\wildfly-20.0.1.Final\wildfly-20.0.1.Final\standalone\data\content\64\9ad4a56fd66e78fb9dc2063336820f7c3b0685\content
+19:41:02,118 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 15) WFLYUT0022: Unregistered web context: '/first-test-app' from server 'default-server'
+19:41:02,202 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-5) WFLYSRV0028: Stopped deployment first-test-app.war (runtime-name: first-test-app.war) in 90ms
+19:41:02,227 INFO  [org.jboss.as.server.deployment] (MSC service thread 1-1) WFLYSRV0027: Starting deployment of "first-test-app.war" (runtime-name: "first-test-app.war")
+19:41:02,524 INFO  [org.wildfly.extension.undertow] (ServerService Thread Pool -- 82) WFLYUT0021: Registered web context: '/first-test-app' for server 'default-server'
+19:41:02,581 INFO  [org.jboss.as.server] (management-handler-thread - 2) WFLYSRV0016: Replaced deployment "first-test-app.war" with deployment "first-test-app.war"
+19:41:02,589 INFO  [org.jboss.as.repository] (management-handler-thread - 2) WFLYDR0002: Content removed from location D:\wildfly-20.0.1.Final\wildfly-20.0.1.Final\standalone\data\content\10\407b88705a80725c2d12a33dc41cdb93c3965e\content
