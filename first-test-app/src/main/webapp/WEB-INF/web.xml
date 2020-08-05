@@ -16,4 +16,13 @@ http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
     <servlet-name>first-servlet</servlet-name>
     <url-pattern>/first-servlet</url-pattern>
   </servlet-mapping>
+
+  <error-page>
+    <error-code>403</error-code>
+    <location>/errorForbidden</location>
+  </error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/errorNotFound</location>
+  </error-page>
 </web-app>
