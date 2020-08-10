@@ -5,8 +5,23 @@
 http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
   version= "4.0" >
   <display-name>Archetype Created Web Application</display-name>
-  
-  
+
+
+  <context-param>
+    <param-name>jdbcConnectionString</param-name>
+    <param-value>jdbc:mysql://localhost:3306/java_ee_db?createDatabaseIfNotExist=true&amp;allowPublicKeyRetrieval=true&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>username</param-name>
+    <param-value>root</param-value>
+  </context-param>
+
+  <context-param>
+    <param-name>password</param-name>
+    <param-value>12345</param-value>
+  </context-param>
+
   <servlet>
     <servlet-name>first-servlet</servlet-name>
     <servlet-class>ru.shamma.MyFirstServlet</servlet-class>
