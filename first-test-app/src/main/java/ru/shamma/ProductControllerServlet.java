@@ -44,6 +44,14 @@ public class ProductControllerServlet extends HttpServlet {
         } else if (req.getServletPath().equals("/new")) {
             req.setAttribute("product", new Product());
             getServletContext().getRequestDispatcher("/WEB-INF/product.jsp").forward(req, resp);
+        } else if (req.getServletPath().equals("/delete")) {
+            String id = req.getParameter("id");
+            try {
+                productRepository.delete(Long.parseLong(id));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            resp.sendRedirect(getServletContext().getContextPath());
         } else if (req.getServletPath().equals("/edit")) {
             String id = req.getParameter("id");
             try {

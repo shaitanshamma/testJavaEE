@@ -51,7 +51,10 @@
                                 <c:param name="id" value="${prod.id}"/>
                             </c:url>
                             <a class="btn btn-success" href="${productEditUrl}"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                        <c:url value="/delete" var="productDeleteUrl">
+                            <c:param name="id" value="${prod.id}"/>
+                        </c:url>
+                            <a class="btn btn-danger" href="${productDeleteUrl}"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 </c:forEach>

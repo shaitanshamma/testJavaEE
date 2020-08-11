@@ -47,6 +47,14 @@ public class CategoryControllerServlet extends HttpServlet {
         } else if (req.getServletPath().equals("/categories")&&req.getPathInfo().equals("/new")) {
             req.setAttribute("category", new Category());
             getServletContext().getRequestDispatcher("/WEB-INF/category.jsp").forward(req, resp);
+        } else if (req.getServletPath().equals("/categories")&&req.getPathInfo().equals("/delete")) {
+            String id = req.getParameter("id");
+            try {
+                categoryRepository.delete(Long.parseLong(id));
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            resp.sendRedirect(getServletContext().getContextPath().concat(req.getServletPath()));
         } else if (req.getServletPath().equals("/categories")&&req.getPathInfo().equals("/edit")) {
             String id = req.getParameter("id");
             try {

@@ -41,7 +41,10 @@
                                 <c:param name="id" value="${cat.id}"/>
                             </c:url>
                             <a class="btn btn-success" href="${categoryEditUrl}"><i class="fas fa-edit"></i></a>
-                            <a class="btn btn-danger" href="#"><i class="far fa-trash-alt"></i></a>
+                            <c:url value="/categories/delete" var="categoryDeleteUrl">
+                                <c:param name="id" value="${cat.id}"/>
+                            </c:url>
+                            <a class="btn btn-danger" href="${categoryDeleteUrl}"><i class="far fa-trash-alt"></i></a>
                         </td>
                     </tr>
                 </c:forEach>
