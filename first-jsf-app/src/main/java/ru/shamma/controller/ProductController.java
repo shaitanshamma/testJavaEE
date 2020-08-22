@@ -1,6 +1,8 @@
 package ru.shamma.controller;
 
 
+import ru.shamma.persist.Category;
+import ru.shamma.persist.CategoryRepository;
 import ru.shamma.persist.Product;
 import ru.shamma.persist.ProductRepository;
 
@@ -16,6 +18,9 @@ public class ProductController implements Serializable {
 
     @Inject
     private ProductRepository productRepository;
+
+    @Inject
+    private CategoryRepository categoryRepository;
 
     private Product product;
 
@@ -52,5 +57,8 @@ public class ProductController implements Serializable {
             productRepository.insert(product);
         }
         return "/index.xhtml?faces-redirect=true";
+    }
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
     }
 }
