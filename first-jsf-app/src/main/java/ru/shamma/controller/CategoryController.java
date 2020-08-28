@@ -4,6 +4,7 @@ package ru.shamma.controller;
 import ru.shamma.persist.Category;
 import ru.shamma.persist.CategoryRepository;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
@@ -15,7 +16,7 @@ import java.util.List;
 @Named
 public class CategoryController implements Serializable {
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
 
     private Category category;

@@ -4,6 +4,7 @@ package ru.shamma.controller;
 import ru.shamma.persist.Brand;
 import ru.shamma.persist.BrandRepository;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -15,7 +16,7 @@ import java.util.List;
 @Named
 public class BrandController implements Serializable {
 
-    @Inject
+    @EJB
     private BrandRepository brandRepository;
 
     private Brand brand;

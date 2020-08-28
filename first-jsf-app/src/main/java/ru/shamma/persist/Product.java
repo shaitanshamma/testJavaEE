@@ -36,6 +36,14 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String name, String description, BigDecimal price, Category category, Brand brand) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.brand = brand;
+    }
+
     public Long getId() {
         return id;
     }

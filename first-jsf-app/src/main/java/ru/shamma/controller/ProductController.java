@@ -1,14 +1,18 @@
 package ru.shamma.controller;
 
 
+import ru.shamma.dao.ProductDao;
 import ru.shamma.persist.Category;
 import ru.shamma.persist.CategoryRepository;
 import ru.shamma.persist.Product;
 import ru.shamma.persist.ProductRepository;
+import ru.shamma.service.ProductService;
+import ru.shamma.service.ProductServiceImpl;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -16,45 +20,45 @@ import java.util.List;
 @Named
 public class ProductController implements Serializable {
 
-    @Inject
-    private ProductRepository productRepository;
+    @EJB
+    private ProductService productService;
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
 
-    private Product product;
+    private ProductDao productDao;
 
-    public Product getProduct() {
-        return product;
+    public ProductDao getProduct() {
+        return productDao;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(ProductDao productDao) {
+        this.productDao = productDao;
     }
 
-    public List<Product> getAllProducts()  {
-        return productRepository.findAll();
+    public List<ProductDao> getAllProducts()  {
+        return productService.findAll();
     }
 
-    public String editProduct(Product product) {
-        this.product = product;
+    public String editProduct(ProductDao productDao) {
+        this.productDao = productDao;
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) {
-        productRepository.delete(product.getId());
+    public void deleteProduct(ProductDao productDao) {
+        productService.delete(productDao.getId());
     }
 
     public String createProduct() {
-        this.product = new Product();
+        this.productDao = new ProductDao();
         return "/product.xhtml?faces-redirect=true";
     }
 
     public String saveProduct(){
-        if (product.getId() != null) {
-            productRepository.update(product);
+        if (productDao.getId() != null) {
+            productService.update(productDao);
         } else {
-            productRepository.insert(product);
+            productService.insert(productDao);
         }
         return "/index.xhtml?faces-redirect=true";
     }
