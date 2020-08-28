@@ -34,9 +34,20 @@
                 </div>
                 <div class="form-group">
                     <h:outputLabel value="Price"/>
-                    <h:inputText p:type="number" styleClass="form-control" id="price" value="#{productController.product.price}" placeholder="Enter price">
+                    <h:inputText styleClass="form-control" id="price" value="#{productController.product.price}" placeholder="Enter price">
                         <f:converter converterId="javax.faces.BigDecimal"/>
                     </h:inputText>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Category"/>
+                    <h:selectOneListbox size="1" styleClass="form-control" id="productCategory"
+                                        value="#{productController.product.category.id}">
+                        <f:selectItems value="#{categoryController.allCategories}"
+                                       var="cat"
+                                       itemValue="#{cat.id}"
+                                       itemLabel="#{cat.title}"
+                                       itemLabelEscaped="true"/>
+                    </h:selectOneListbox>
                 </div>
                 <h:commandButton value="Submit" styleClass="btn btn-primary" action="#{productController.saveProduct()}"/>
             </h:form>

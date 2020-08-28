@@ -1,6 +1,8 @@
 package ru.shamma.controller;
 
 
+import ru.shamma.persist.Category;
+import ru.shamma.persist.CategoryRepository;
 import ru.shamma.persist.Product;
 import ru.shamma.persist.ProductRepository;
 
@@ -8,7 +10,6 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
 
 @SessionScoped
@@ -17,6 +18,9 @@ public class ProductController implements Serializable {
 
     @Inject
     private ProductRepository productRepository;
+
+    @Inject
+    private CategoryRepository categoryRepository;
 
     private Product product;
 
@@ -28,7 +32,7 @@ public class ProductController implements Serializable {
         this.product = product;
     }
 
-    public List<Product> getAllProducts() throws SQLException {
+    public List<Product> getAllProducts()  {
         return productRepository.findAll();
     }
 
@@ -37,7 +41,7 @@ public class ProductController implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public void deleteProduct(Product product) throws SQLException {
+    public void deleteProduct(Product product) {
         productRepository.delete(product.getId());
     }
 
@@ -46,12 +50,15 @@ public class ProductController implements Serializable {
         return "/product.xhtml?faces-redirect=true";
     }
 
-    public String saveProduct() throws SQLException {
+    public String saveProduct(){
         if (product.getId() != null) {
             productRepository.update(product);
         } else {
             productRepository.insert(product);
         }
         return "/index.xhtml?faces-redirect=true";
+    }
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
     }
 }

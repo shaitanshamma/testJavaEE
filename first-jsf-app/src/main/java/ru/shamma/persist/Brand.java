@@ -1,10 +1,27 @@
 package ru.shamma.persist;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "brands")
 public class Brand {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String title;
+
+    @Column
     private String country;
 
+    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL)
+    private List<Product> products;
+
+    public Brand() {
+    }
     public Brand(Long id, String title, String country) {
         this.id = id;
         this.title = title;
@@ -16,8 +33,6 @@ public class Brand {
         this.country = country;
     }
 
-    public Brand() {
-    }
 
     public Long getId() {
         return id;
@@ -42,6 +57,14 @@ public class Brand {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override

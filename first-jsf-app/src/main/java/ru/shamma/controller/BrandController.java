@@ -3,14 +3,13 @@ package ru.shamma.controller;
 
 import ru.shamma.persist.Brand;
 import ru.shamma.persist.BrandRepository;
-import ru.shamma.persist.Product;
 
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
+
 
 @SessionScoped
 @Named
@@ -29,7 +28,7 @@ public class BrandController implements Serializable {
         this.brand = brand;
     }
 
-    public List<Brand> getAllBrand() throws SQLException {
+    public List<Brand> getAllBrand() {
         return brandRepository.findAll();
     }
 
@@ -38,7 +37,7 @@ public class BrandController implements Serializable {
         return "/brand.xhtml?faces-redirect=true";
     }
 
-    public void deleteBrand(Brand brand) throws SQLException {
+    public void deleteBrand(Brand brand)  {
         brandRepository.delete(brand.getId());
     }
 
@@ -47,7 +46,7 @@ public class BrandController implements Serializable {
         return "/brand.xhtml?faces-redirect=true";
     }
 
-    public String saveBrand() throws SQLException {
+    public String saveBrand()  {
         if (brand.getId() != null) {
             brandRepository.update(brand);
         } else {
