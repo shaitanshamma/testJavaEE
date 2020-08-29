@@ -1,13 +1,11 @@
 package ru.shamma.controller;
 
 
-import ru.shamma.persist.Category;
-import ru.shamma.persist.CategoryRepository;
+import ru.shamma.dao.CategoryDao;
+import ru.shamma.service.CategoryService;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -17,41 +15,41 @@ import java.util.List;
 public class CategoryController implements Serializable {
 
     @EJB
-    private CategoryRepository categoryRepository;
+    private CategoryService categoryService;
 
-    private Category category;
+    private CategoryDao categoryDao;
 
-    public Category getCategory() {
-        return category;
+    public CategoryDao getCategory() {
+        return categoryDao;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(CategoryDao categoryDao) {
+        this.categoryDao = categoryDao;
     }
 
-    public List<Category> getAllCategories()  {
-        return categoryRepository.findAll();
+    public List<CategoryDao> getAllCategories()  {
+        return categoryService.findAll();
     }
 
-    public String editCategory(Category category) {
-        this.category = category;
+    public String editCategory(CategoryDao categoryDao) {
+        this.categoryDao = categoryDao;
         return "/category.xhtml?faces-redirect=true";
     }
 
-    public void deleteCategory(Category category)  {
-        categoryRepository.delete(category.getId());
+    public void deleteCategory(CategoryDao categoryDao)  {
+        categoryService.delete(categoryDao.getId());
     }
 
     public String createCategory() {
-        this.category = new Category();
+        this.categoryDao = new CategoryDao();
         return "/category.xhtml?faces-redirect=true";
     }
 
     public String saveCategory() {
-        if (category.getId() != null) {
-            categoryRepository.update(category);
+        if (categoryDao.getId() != null) {
+            categoryService.update(categoryDao);
         } else {
-            categoryRepository.insert(category);
+            categoryService.insert(categoryDao);
         }
         return "/categories.xhtml?faces-redirect=true";
     }

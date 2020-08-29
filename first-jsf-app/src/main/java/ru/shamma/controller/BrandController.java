@@ -1,12 +1,11 @@
 package ru.shamma.controller;
 
 
-import ru.shamma.persist.Brand;
-import ru.shamma.persist.BrandRepository;
+import ru.shamma.dao.BrandDao;
+import ru.shamma.service.BrandService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -17,41 +16,41 @@ import java.util.List;
 public class BrandController implements Serializable {
 
     @EJB
-    private BrandRepository brandRepository;
+    private BrandService brandService;
 
-    private Brand brand;
+    private BrandDao brandDao;
 
-    public Brand getBrand() {
-        return brand;
+    public BrandDao getBrand() {
+        return brandDao;
     }
 
-    public void setBrand(Brand brand) {
-        this.brand = brand;
+    public void setBrand(BrandDao brand) {
+        this.brandDao = brand;
     }
 
-    public List<Brand> getAllBrand() {
-        return brandRepository.findAll();
+    public List<BrandDao> getAllBrand() {
+        return brandService.findAll();
     }
 
-    public String editBrand(Brand brand) {
-        this.brand = brand;
+    public String editBrand(BrandDao brandDao) {
+        this.brandDao = brandDao;
         return "/brand.xhtml?faces-redirect=true";
     }
 
-    public void deleteBrand(Brand brand)  {
-        brandRepository.delete(brand.getId());
+    public void deleteBrand(BrandDao brandDao)  {
+        brandService.delete(brandDao.getId());
     }
 
     public String createBrand() {
-        this.brand = new Brand();
+        this.brandDao = new BrandDao();
         return "/brand.xhtml?faces-redirect=true";
     }
 
     public String saveBrand()  {
-        if (brand.getId() != null) {
-            brandRepository.update(brand);
+        if (brandDao.getId() != null) {
+            brandService.update(brandDao);
         } else {
-            brandRepository.insert(brand);
+            brandService.insert(brandDao);
         }
         return "/brands.xhtml?faces-redirect=true";
     }

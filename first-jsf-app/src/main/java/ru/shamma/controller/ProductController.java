@@ -4,10 +4,7 @@ package ru.shamma.controller;
 import ru.shamma.dao.ProductDao;
 import ru.shamma.persist.Category;
 import ru.shamma.persist.CategoryRepository;
-import ru.shamma.persist.Product;
-import ru.shamma.persist.ProductRepository;
 import ru.shamma.service.ProductService;
-import ru.shamma.service.ProductServiceImpl;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
