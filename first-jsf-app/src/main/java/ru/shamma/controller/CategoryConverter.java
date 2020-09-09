@@ -4,20 +4,20 @@ package ru.shamma.controller;
 import ru.shamma.persist.Category;
 import ru.shamma.persist.CategoryRepository;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @RequestScoped
 @Named
 public class CategoryConverter implements Converter<Category> {
 
-    @Inject
+    @EJB
     private CategoryRepository categoryRepository;
 
     @Override

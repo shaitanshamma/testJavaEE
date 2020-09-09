@@ -3,18 +3,15 @@ package ru.shamma.persist;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Named;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
-import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
 
-@ApplicationScoped
-@Named
-public class BrandRepository implements Serializable {
+@Stateless
+public class BrandRepository {
 
     private static final Logger logger = LoggerFactory.getLogger(BrandRepository.class);
 
@@ -24,17 +21,17 @@ public class BrandRepository implements Serializable {
     public BrandRepository() {
     }
 
-    @Transactional
+    @TransactionAttribute
     public void insert(Brand brand) {
         entityManager.persist(brand);
     }
 
-    @Transactional
+    @TransactionAttribute
     public void update(Brand brand) {
         entityManager.merge(brand);
     }
 
-    @Transactional
+    @TransactionAttribute
     public void delete(long id) {
         Brand brand = entityManager.find(Brand.class, id);
         entityManager.remove(brand);

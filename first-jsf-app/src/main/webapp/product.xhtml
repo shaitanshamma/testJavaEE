@@ -41,11 +41,22 @@
                 <div class="form-group">
                     <h:outputLabel value="Category"/>
                     <h:selectOneListbox size="1" styleClass="form-control" id="productCategory"
-                                        value="#{productController.product.category.id}">
+                                        value="#{productController.product.categoryId}">
                         <f:selectItems value="#{categoryController.allCategories}"
                                        var="cat"
                                        itemValue="#{cat.id}"
                                        itemLabel="#{cat.title}"
+                                       itemLabelEscaped="true"/>
+                    </h:selectOneListbox>
+                </div>
+                <div class="form-group">
+                    <h:outputLabel value="Brand"/>
+                    <h:selectOneListbox size="1" styleClass="form-control" id="productBrand"
+                                        value="#{productController.product.brandId}">
+                        <f:selectItems value="#{brandController.allBrand}"
+                                       var="brand"
+                                       itemValue="#{brand.id}"
+                                       itemLabel="#{brand.title}"
                                        itemLabelEscaped="true"/>
                     </h:selectOneListbox>
                 </div>
