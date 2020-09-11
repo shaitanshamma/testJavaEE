@@ -2,6 +2,7 @@ package ru.shamma.persist;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.shamma.dao.ProductDao;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -49,4 +50,11 @@ public class ProductRepository {
         return entityManager.createQuery("from Product", Product.class).getResultList();
     }
 
+    public Optional<Product> findByName(String name) {
+        Product product = entityManager.createQuery("from Product p where p.name LIKE ?1", Product.class).setParameter(1, name).getSingleResult();
+        if (product != null) {
+            return Optional.of(product);
+        }
+        return Optional.empty();
+    }
 }

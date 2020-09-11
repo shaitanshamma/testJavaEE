@@ -10,8 +10,14 @@
     <modules>
         <module>first-test-app</module>
         <module>first-jsf-app</module>
+        <module>client-ws</module>
     </modules>
     <packaging>pom</packaging>
-
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
 </project>

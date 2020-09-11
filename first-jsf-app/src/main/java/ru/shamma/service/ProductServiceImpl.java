@@ -2,16 +2,19 @@ package ru.shamma.service;
 
 import ru.shamma.dao.ProductDao;
 import ru.shamma.persist.*;
+import ru.shamma.rest.ProductServiceRest;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
+import javax.jws.WebService;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Stateless
-public class ProductServiceImpl implements ProductService {
+@WebService(endpointInterface = "ru.shamma.service.ProductServiceWs", serviceName = "ProductService")
+public class ProductServiceImpl implements ProductService, ProductServiceWs, ProductServiceRest {
 
     @EJB
     private ProductRepository productRepository;
@@ -51,6 +54,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public ProductDao findByIdRest(Long id) {
+        return findById(id).get();
+    }
+
+    @Override
     @TransactionAttribute
     public void delete(Long id) {
         productRepository.delete(id);
@@ -64,5 +72,15 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDao> findAll() {
         return productRepository.findAll().stream().map(ProductDao::new).collect(Collectors.toList());
+    }
+
+    @Override
+    public ProductDao findByIdWs(Long id) {
+        return findById(id).get();
+    }
+
+    @Override
+    public ProductDao findByName(String name) {
+        return productRepository.findByName(name).map(ProductDao::new).get();
     }
 }

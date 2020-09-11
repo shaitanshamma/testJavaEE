@@ -4,6 +4,7 @@ package ru.shamma.service;
 import ru.shamma.dao.BrandDao;
 import ru.shamma.persist.Brand;
 import ru.shamma.persist.BrandRepository;
+import ru.shamma.rest.BrandServiceRest;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Stateless
-public class BrandServiceImpl implements BrandService {
+public class BrandServiceImpl implements BrandService, BrandServiceRest {
 
     @EJB
     private BrandRepository brandRepository;
@@ -27,11 +28,21 @@ public class BrandServiceImpl implements BrandService {
     }
 
     @Override
+    public void delete(Long id) {
+        brandRepository.delete(id);
+    }
+
+    @Override
     public void update(BrandDao brandDao) {
         Brand brand = new Brand(brandDao.getId(),
                 brandDao.getTitle(),
                 brandDao.getCountry());
         brandRepository.insert(brand);
+    }
+
+    @Override
+    public BrandDao findByIdRest(Long id) {
+        return findById(id).get();
     }
 
     @Override
