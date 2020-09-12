@@ -32,9 +32,9 @@ public class CategoryServiceImpl implements CategoryService, CategoryServiceRest
 
     @Override
     public void update(CategoryDao categoryDao) {
-        Category category = new Category(categoryDao.getId(),
-                categoryDao.getTitle());
-        categoryRepository.insert(category);
+        Category category = categoryRepository.findById(categoryDao.getId()).get();
+        category.setTitle(categoryDao.getTitle());
+        categoryRepository.update(category);
     }
 
     @Override

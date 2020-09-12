@@ -25,19 +25,19 @@ DELETE http://127.0.0.1:8080/first-jsf-app/api/products/1
 
 ###
 
-PUT http://127.0.0.1:8080/first-jsf-app/api/products/1
+PUT http://127.0.0.1:8080/first-jsf-app/api/products
 Content-Type: application/json
 
-  {
-    "brandId": 1,
-    "brandTitle": "1",
-    "categoryId": 1,
-    "categoryTitle": "1",
-    "description": "3",
-    "id": 6,
-    "name": "rest 2",
-    "price": 400.00
-  }
+{
+  "brandId": 2,
+  "brandTitle": "second",
+  "categoryId": 5,
+  "id": 14,
+  "categoryTitle": "third",
+  "description": "22",
+  "name": "121 new",
+  "price": 3335.00
+}
 
 ###
 

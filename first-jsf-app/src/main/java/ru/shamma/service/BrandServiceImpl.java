@@ -22,8 +22,8 @@ public class BrandServiceImpl implements BrandService, BrandServiceRest {
     @Override
     public void insert(BrandDao brandDao) {
         Brand brand = new Brand(brandDao.getId(),
-                                brandDao.getTitle(),
-                                brandDao.getCountry());
+                brandDao.getTitle(),
+                brandDao.getCountry());
         brandRepository.insert(brand);
     }
 
@@ -34,10 +34,11 @@ public class BrandServiceImpl implements BrandService, BrandServiceRest {
 
     @Override
     public void update(BrandDao brandDao) {
-        Brand brand = new Brand(brandDao.getId(),
-                brandDao.getTitle(),
-                brandDao.getCountry());
-        brandRepository.insert(brand);
+        Brand brand = brandRepository.findById(brandDao.getId()).get();
+        brand.setCountry(brandDao.getCountry());
+        brand.setTitle(brandDao.getTitle());
+
+        brandRepository.update(brand);
     }
 
     @Override

@@ -44,12 +44,12 @@ public class ProductServiceImpl implements ProductService, ProductServiceWs, Pro
     public void update(ProductDao productDao) {
         Category category = categoryRepository.findById(productDao.getCategoryId()).orElse(null);
         Brand brand = brandRepository.findById(productDao.getBrandId()).orElse(null);
-        Product product = new Product(
-                productDao.getName(),
-                productDao.getDescription(),
-                productDao.getPrice(),
-                category,
-                brand);
+        Product product = productRepository.findById(productDao.getId()).get();
+        product.setName(productDao.getName());
+        product.setBrand(brand);
+        product.setCategory(category);
+        product.setDescription(productDao.getDescription());
+        product.setPrice(productDao.getPrice());
         productRepository.update(product);
     }
 
@@ -63,6 +63,7 @@ public class ProductServiceImpl implements ProductService, ProductServiceWs, Pro
     public void delete(Long id) {
         productRepository.delete(id);
     }
+
 
     @Override
     public Optional<ProductDao> findById(Long id) {
