@@ -57,4 +57,9 @@ public class ProductRepository {
         }
         return Optional.empty();
     }
+
+    public List<Product> findByCategoryId(long id) {
+        return entityManager.createQuery("from Product p where p.category.id = ?1", Product.class).setParameter(1, id).getResultList();
+
+    }
 }

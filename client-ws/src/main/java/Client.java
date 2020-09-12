@@ -16,5 +16,8 @@ public class Client {
         System.out.println(port.findByIdWs(2L).getName());
 
         System.out.println(port.findByName("Soap").getName());
+
+        port.findByCategoryId(3L).forEach(productDao -> System.out.println(productDao.getName() +"-" + productDao.getDescription()));
+
     }
 }

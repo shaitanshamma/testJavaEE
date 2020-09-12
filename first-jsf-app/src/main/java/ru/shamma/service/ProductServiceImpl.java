@@ -83,4 +83,9 @@ public class ProductServiceImpl implements ProductService, ProductServiceWs, Pro
     public ProductDao findByName(String name) {
         return productRepository.findByName(name).map(ProductDao::new).get();
     }
+
+    @Override
+    public List<ProductDao> findByCategoryId(long id) {
+        return productRepository.findByCategoryId(id).stream().map(ProductDao::new).collect(Collectors.toList());
+    }
 }

@@ -20,7 +20,7 @@ public class Product {
     @Column
     private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     private Category category;
 
     @ManyToOne

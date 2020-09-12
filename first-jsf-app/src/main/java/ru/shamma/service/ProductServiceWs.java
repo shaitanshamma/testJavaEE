@@ -17,4 +17,7 @@ public interface ProductServiceWs {
 
     @WebMethod
     ProductDao findByName(String name);
+
+    @WebMethod
+    List<ProductDao> findByCategoryId(long id);
 }
