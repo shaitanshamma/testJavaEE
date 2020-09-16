@@ -1,0 +1,86 @@
+GET  http://127.0.0.1:8080/first-jsf-app/api/products
+
+###
+
+GET  http://127.0.0.1:8080/first-jsf-app/api/products/2
+
+###
+
+POST http://127.0.0.1:8080/first-jsf-app/api/products
+Content-Type: application/json
+
+{
+  "brandId": 1,
+  "brandTitle": "1",
+  "categoryId": 1,
+  "categoryTitle": "1",
+  "description": "3",
+  "name": "rest 2",
+  "price": 400
+}
+
+###
+
+DELETE http://127.0.0.1:8080/first-jsf-app/api/products/1
+
+###
+
+PUT http://127.0.0.1:8080/first-jsf-app/api/products
+Content-Type: application/json
+
+{
+  "brandId": 2,
+  "brandTitle": "second",
+  "categoryId": 5,
+  "id": 14,
+  "categoryTitle": "third",
+  "description": "22",
+  "name": "121 new",
+  "price": 3335.00
+}
+
+###
+
+GET http://127.0.0.1:8080/first-jsf-app/api/categories
+
+###
+
+POST http://127.0.0.1:8080/first-jsf-app/api/categories
+Content-Type: application/json
+
+{
+  "title": "23"
+}
+
+###
+
+DELETE http://127.0.0.1:8080/first-jsf-app/api/categories/1
+
+###
+
+PUT http://127.0.0.1:8080/first-jsf-app/api/categories
+Content-Type: application/json
+
+{
+  "id": 2,
+  "title": "1"
+}
+
+###
+
+GET http://127.0.0.1:8080/first-jsf-app/api/brands
+
+###
+GET http://127.0.0.1:8080/first-jsf-app/api/brands/1
+
+###
+
+POST http://127.0.0.1:8080/first-jsf-app/api/brands
+Content-Type: application/json
+
+{
+  "title": "23",
+  "country" : "1212"
+}
+
+###
