@@ -11,6 +11,7 @@
         <module>first-test-app</module>
         <module>first-jsf-app</module>
         <module>client-ws</module>
+        <module>client-rest</module>
     </modules>
     <packaging>pom</packaging>
     
