@@ -40,9 +40,11 @@
                         <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{categoryController.editCategory(category)}"/>
+                                             action="#{categoryController.editCategory(category)}"
+                                             rendered="#{request.isUserInRole('ADMIN')}"/>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{categoryController.deleteCategory(category)}">
+                                             action="#{categoryController.deleteCategory(category)}"
+                                             rendered="#{request.isUserInRole('ADMIN')}">
                                 <f:ajax event="click" render="categoriesForm"/>
                             </h:commandButton>
                         </h:column>

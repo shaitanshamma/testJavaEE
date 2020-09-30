@@ -44,9 +44,11 @@
                         <h:column>
                             <f:facet name="header">Action</f:facet>
                             <h:commandButton value="Edit" styleClass="btn btn-success"
-                                             action="#{brandController.editBrand(brand)}"/>
+                                             action="#{brandController.editBrand(brand)}"
+                            rendered="#{request.isUserInRole('ADMIN')}"/>
                             <h:commandButton value="Delete" styleClass="btn btn-danger"
-                                             action="#{brandController.deleteBrand(brand)}">
+                                             action="#{brandController.deleteBrand(brand)}"
+                                             rendered="#{request.isUserInRole('ADMIN')}">
                                 <f:ajax event="click" render="brandForm"/>
                             </h:commandButton>
                         </h:column>

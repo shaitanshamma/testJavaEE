@@ -8,7 +8,9 @@ import ru.shamma.service.ProductService;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.http.HttpSession;
 
 import java.io.Serializable;
 import java.util.List;
@@ -61,5 +63,10 @@ public class ProductController implements Serializable {
     }
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
+    }
+
+    public String logout() {
+        ((HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false)).invalidate();
+        return "/index.xhtml?faces-redirect=true";
     }
 }

@@ -39,6 +39,17 @@
                 <li class="nav-item active">
                     <h:link styleClass="nav-link" value="Cart" outcome="cart"/>
                 </li>
+                <li class="nav-item active">
+                    <h:link styleClass="nav-link" value="Login" outcome="login"/>
+                </li>
+                <li class="nav-item">
+                    <h:link rendered="#{request.isUserInRole('ADMIN')}" styleClass="nav-link" outcome="admin/users">Users</h:link>
+                </li>
+                <li class="nav-item">
+                    <h:form rendered="#{request.userPrincipal != null}">
+                        <h:commandLink action="#{productController.logout()}" value="Logout #{request.userPrincipal.name}"/>
+                    </h:form>
+                </li>
             </ul>
         </div>
     </nav>
